@@ -2,6 +2,7 @@ from appium import webdriver
 import unittest
 import time
 from pytest_testconfig import config
+from selenium.webdriver.common.by import By
 
 timeout = 30
 poll = 2
@@ -42,7 +43,7 @@ class IAppBVT(unittest.TestCase):
         while time.time() - start < time_out and elem is None:
             time.sleep(poll)
             try:
-                elem = self.driver.find_element_by_xpath(elem_xpath)
+                elem = self.driver.find_element(By.XPATH,elem_xpath)
             except Exception:
                 print('by pass the element not found')
 
